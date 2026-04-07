@@ -66,26 +66,26 @@ The project demonstrates all four OOP pillars required by the rubric:
 bank_simulation/
 ├── src/
 │   ├── model/
-│   │   ├── Account.java                # Abstract base class — Person A
-│   │   ├── SavingsAccount.java         # Extends Account — Person A
-│   │   ├── CheckingAccount.java        # Extends Account — Person A
-│   │   ├── LoanAccount.java            # Extends Account — Person A
-│   │   ├── CreditAccount.java          # Extends Account — Person A
-│   │   ├── Customer.java               # Customer entity — Person A
-│   │   ├── Admin.java                  # Admin entity — Person A
-│   │   └── Transaction.java            # Immutable transaction record — Person A
+│   │   ├── Account.java                # Abstract base class — Luis
+│   │   ├── SavingsAccount.java         # Extends Account — Luis
+│   │   ├── CheckingAccount.java        # Extends Account — Luis
+│   │   ├── LoanAccount.java            # Extends Account — Luis
+│   │   ├── CreditAccount.java          # Extends Account — Luis
+│   │   ├── Customer.java               # Customer entity — Luis
+│   │   ├── Admin.java                  # Admin entity — Luis
+│   │   └── Transaction.java            # Immutable transaction record — Luis
 │   │
 │   ├── interfaces/
-│   │   ├── Transactable.java           # deposit(), withdraw() — Person A
-│   │   ├── InterestBearing.java        # calculateInterest(), applyInterest() — Person A
-│   │   └── Notifiable.java             # sendAlert(String msg) — Person A
+│   │   ├── Transactable.java           # deposit(), withdraw() — Luis
+│   │   ├── InterestBearing.java        # calculateInterest(), applyInterest() — Luis
+│   │   └── Notifiable.java             # sendAlert(String msg) — Luis
 │   │
 │   ├── exceptions/
-│   │   ├── InsufficientFundsException.java      # Person A
-│   │   ├── InvalidAmountException.java          # Person A
-│   │   ├── AccountNotFoundException.java        # Person A
-│   │   ├── OverdraftException.java              # Person A
-│   │   └── CreditLimitExceededException.java    # Person A
+│   │   ├── InsufficientFundsException.java      # Luis
+│   │   ├── InvalidAmountException.java          # Luis
+│   │   ├── AccountNotFoundException.java        # Luis
+│   │   ├── OverdraftException.java              # Luis
+│   │   └── CreditLimitExceededException.java    # Luis
 │   │
 │   ├── service/
 │   │   ├── BankService.java            # Account/customer registry — Person B
@@ -108,7 +108,7 @@ bank_simulation/
 
 | Member | Role | Owns |
 |---|---|---|
-| Person A | Core OOP Model | `model/`, `interfaces/`, `exceptions/` |
+| Luis | Core OOP Model | `model/`, `interfaces/`, `exceptions/` |
 | Person B | Business Logic | `service/BankService.java`, `service/TransactionService.java`, `service/InterestService.java`, `Main.java` |
 | Person C | JavaFX UI | `ui/LoginScreen.java`, `ui/CustomerDashboard.java`, `ui/AdminDashboard.java`, `ui/TransactionForm.java`, `ui/TransactionHistoryView.java` |
 
@@ -117,7 +117,7 @@ bank_simulation/
 > **Agree on this before writing any code.** All three workstreams depend on these definitions. Do not start module code until all three members have signed off on the enums and service API below.
 
 ```java
-// Shared enums — Person A writes these first
+// Shared enums — Luis writes these first
 public enum AccountType {
     SAVINGS, CHECKING, LOAN, CREDIT
 }
@@ -271,8 +271,8 @@ public class BankService {
 
 | Dates | Milestone | Who |
 |---|---|---|
-| **Apr 6–7** | Agree on shared data contract. Person A starts `Account` and interface skeletons. | All three |
-| **Apr 8–9** | Person A completes all model classes and exceptions. Person B + C draft UML for interim report. | A (code) · B+C (UML) |
+| **Apr 6–7** | Agree on shared data contract. Luis starts `Account` and interface skeletons. | All three |
+| **Apr 8–9** | Luis completes all model classes and exceptions. Person B + C draft UML for interim report. | A (code) · B+C (UML) |
 | **Apr 10** | **Interim report due.** Submit UML class diagram + role assignments. | All three |
 | **Apr 11–14** | Person B: `BankService` + `TransactionService`. Person C: static JavaFX screens with mock data. | B · C (parallel) |
 | **Apr 15–18** | Integration sprint — Person C swaps mock data for real service calls. All exceptions wired to UI. | B + C integrate |
