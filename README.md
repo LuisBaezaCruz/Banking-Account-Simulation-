@@ -88,9 +88,9 @@ bank_simulation/
 │   │   └── CreditLimitExceededException.java    # Luis
 │   │
 │   ├── service/
-│   │   ├── BankService.java            # Account/customer registry — Person B
-│   │   ├── TransactionService.java     # deposit, withdraw, transfer logic — Person B
-│   │   └── InterestService.java        # Monthly interest application — Person B
+│   │   ├── BankService.java            # Account/customer registry — # Abenezer
+│   │   ├── TransactionService.java     # deposit, withdraw, transfer logic — # Abenezer
+│   │   └── InterestService.java        # Monthly interest application — # Abenezer
 │   │
 │   ├── ui/
 │   │   ├── LoginScreen.java            # JavaFX login (customer vs admin) — Person C
