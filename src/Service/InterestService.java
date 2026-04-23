@@ -12,6 +12,7 @@ import Model.Account;
 public class InterestService {
     private final BankService bank;
 
+    /** Creates the service using the shared BankService as the source of all accounts. */
     public InterestService(BankService bank) {
         this.bank = bank;
     }

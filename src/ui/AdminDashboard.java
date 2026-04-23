@@ -12,14 +12,28 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+/*
+ * AdminDashboard.java
+ * The administrator's control panel. Provides three actions:
+ *   - View all customers and their accounts
+ *   - View the detailed summary of every account in the system
+ *   - Apply monthly interest to all InterestBearing accounts
+ * Results are printed to a read-only text area on the right side of the screen.
+ */
 public class AdminDashboard {
 
     private final Stage stage;
 
+    /** Creates an admin dashboard rendered on the given stage. */
     public AdminDashboard(Stage stage) {
         this.stage = stage;
     }
 
+    /**
+     * Builds and displays the admin dashboard. Button handlers write their output
+     * directly into the shared TextArea so the admin can review results without
+     * navigating away.
+     */
     public void show() {
         // ── Header ────────────────────────────────────────────────────
         Label title = new Label("ADMIN DASHBOARD");
@@ -51,6 +65,7 @@ public class AdminDashboard {
         logoutBtn.setStyle("-fx-background-color: #c62828; -fx-text-fill: white;"
                          + "-fx-pref-width: 210px; -fx-padding: 9 0;");
 
+        // Lists every customer followed by their accounts (brief toString format)
         customersBtn.setOnAction(e -> {
             StringBuilder sb = new StringBuilder();
             for (Customer c : AppContext.bankService.getAllCustomers()) {
@@ -62,6 +77,7 @@ public class AdminDashboard {
             output.setText(sb.toString());
         });
 
+        // Lists every account across all customers using the detailed getSummary() format
         accountsBtn.setOnAction(e -> {
             StringBuilder sb = new StringBuilder();
             for (Account a : AppContext.bankService.getAllAccounts())
@@ -69,6 +85,7 @@ public class AdminDashboard {
             output.setText(sb.toString());
         });
 
+        // Applies interest to all SavingsAccount and CreditAccount instances
         interestBtn.setOnAction(e -> {
             AppContext.interestService.applyMonthlyInterest();
             output.setText("Monthly interest applied to all eligible accounts.");
