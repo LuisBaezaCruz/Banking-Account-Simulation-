@@ -54,14 +54,16 @@ public class AdminDashboard {
         String btnStyle = "-fx-background-color: #37474f; -fx-text-fill: white;"
                         + "-fx-pref-width: 210px; -fx-padding: 9 0;";
 
-        Button customersBtn = new Button("View All Customers");
-        Button accountsBtn  = new Button("View All Accounts");
-        Button interestBtn  = new Button("Apply Monthly Interest");
-        Button logoutBtn    = new Button("Logout");
+        Button customersBtn      = new Button("View All Customers");
+        Button accountsBtn       = new Button("View All Accounts");
+        Button interestBtn       = new Button("Apply Monthly Interest");
+        Button removeInterestBtn = new Button("Remove Monthly Interest");
+        Button logoutBtn         = new Button("Logout");
 
         customersBtn.setStyle(btnStyle);
         accountsBtn.setStyle(btnStyle);
         interestBtn.setStyle(btnStyle);
+        removeInterestBtn.setStyle(btnStyle);
         logoutBtn.setStyle("-fx-background-color: #c62828; -fx-text-fill: white;"
                          + "-fx-pref-width: 210px; -fx-padding: 9 0;");
 
@@ -91,9 +93,15 @@ public class AdminDashboard {
             output.setText("Monthly interest applied to all eligible accounts.");
         });
 
+        // Reverses the last interest application on all SavingsAccount and CreditAccount instances
+        removeInterestBtn.setOnAction(e -> {
+            AppContext.interestService.removeMonthlyInterest();
+            output.setText("Monthly interest removed from all eligible accounts.");
+        });
+
         logoutBtn.setOnAction(e -> new LoginScreen(stage).show());
 
-        VBox buttons = new VBox(10, customersBtn, accountsBtn, interestBtn, logoutBtn);
+        VBox buttons = new VBox(10, customersBtn, accountsBtn, interestBtn, removeInterestBtn, logoutBtn);
         buttons.setAlignment(Pos.TOP_CENTER);
 
         HBox content = new HBox(15, buttons, output);

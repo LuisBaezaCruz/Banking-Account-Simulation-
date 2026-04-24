@@ -87,6 +87,15 @@ public class CreditAccount extends Account implements Transactable, InterestBear
                 TransactionType.INTEREST_APPLIED, interest, "Interest applied"));
     }
 
+    /** Reverses the last interest application by removing amountOwed * rate / (1 + rate) from the debt. */
+    @Override
+    public void removeInterest() {
+        double interest = amountOwed * interestRate / (1 + interestRate);
+        amountOwed -= interest;
+        recordTransaction(new Transaction("TXN-" + txCounter++, accountId,
+                TransactionType.INTEREST_REMOVED, interest, "Interest removed"));
+    }
+
     /** Prints an alert message to stdout prefixed with the account ID. */
     @Override
     public void sendAlert(String message) {

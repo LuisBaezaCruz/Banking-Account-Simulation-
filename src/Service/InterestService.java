@@ -28,4 +28,16 @@ public class InterestService {
         }
         System.out.println("[InterestService] Applied interest to " + count + " account(s).");
     }
+
+    /** Loops all accounts and calls removeInterest() on every InterestBearing one. */
+    public void removeMonthlyInterest() {
+        int count = 0;
+        for (Account account : bank.getAllAccounts()) {
+            if (account instanceof InterestBearing ib) {
+                ib.removeInterest();
+                count++;
+            }
+        }
+        System.out.println("[InterestService] Removed interest from " + count + " account(s).");
+    }
 }

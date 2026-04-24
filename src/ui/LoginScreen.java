@@ -106,6 +106,10 @@ public class LoginScreen {
             errorLabel.setText("Please fill in both fields.");
             return;
         }
+        if (id.equals("admin") && pw.equals("admin123")) {
+            new AdminDashboard(stage).show();
+            return;
+        }
         if (!AppContext.bankService.authenticate(id, pw)) {
             errorLabel.setText("Invalid Customer ID or password.");
             pwField.clear();

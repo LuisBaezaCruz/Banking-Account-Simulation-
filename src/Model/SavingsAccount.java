@@ -67,6 +67,15 @@ public class SavingsAccount extends Account implements Transactable, InterestBea
                 TransactionType.INTEREST_APPLIED, interest, "Interest applied"));
     }
 
+    /** Reverses the last interest application by removing balance * rate / (1 + rate) from the balance. */
+    @Override
+    public void removeInterest() {
+        double interest = balance * interestRate / (1 + interestRate);
+        balance -= interest;
+        recordTransaction(new Transaction("TXN-" + txCounter++, accountId,
+                TransactionType.INTEREST_REMOVED, interest, "Interest removed"));
+    }
+
     /** Prints an alert message to stdout prefixed with the account ID. */
     @Override
     public void sendAlert(String message) {
